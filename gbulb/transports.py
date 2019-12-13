@@ -163,7 +163,7 @@ class ReadTransport(BaseTransport, transports.ReadTransport):
         except asyncio.CancelledError:
             if not self._closing:
                 raise
-        except futures.InvalidStateError:
+        except asyncio.InvalidStateError:
             self._read_fut = fut
             self._cancelable.add(self._read_fut)
         else:
